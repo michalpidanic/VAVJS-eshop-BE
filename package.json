@@ -1,24 +1,32 @@
 {
-  "name": "vavjs-eshop-be",
-  "version": "0.0.0",
-  "main": "app.js",
-  "scripts": {
-    "debug": "ndb server.js",
-    "start": "nodemon server.js"
-  },
-  "author": "Michal Pidanic",
-  "license": "MIT",
-  "dependencies": {
-    "bcryptjs": "^2.4.3",
-    "cors": "^2.8.5",
-    "dotenv": "^8.2.0",
-    "express": "^4.17.1",
-    "express-rate-limit": "^5.0.0",
-    "helmet": "^3.21.2",
-    "hpp": "^0.2.2",
-    "jsonwebtoken": "^8.5.1",
-    "validator": "^12.0.0",
-    "xss-clean": "^0.1.1"
-  },
-  "private": true
+    "name": "vavjs-eshop-be",
+    "version": "0.0.0",
+    "main": "app.js",
+    "scripts": {
+        "debug": "ndb server.js",
+        "start": "nodemon server.js"
+    },
+    "author": "Michal Pidanic",
+    "license": "MIT",
+    "dependencies": {
+        "bcryptjs": "^2.4.3",
+        "body-parser": "^1.19.0",
+        "cors": "^2.8.5",
+        "dotenv": "^8.2.0",
+        "express": "^4.17.1",
+        "express-rate-limit": "^5.0.0",
+        "helmet": "^3.21.2",
+        "hpp": "^0.2.2",
+        "jsonwebtoken": "^8.5.1",
+        "morgan": "^1.10.0",
+        "pg": "^8.7.1",
+        "pg-hstore": "^2.3.4",
+        "sequelize": "^6.12.0-alpha.1",
+        "validator": "^12.0.0",
+        "xss-clean": "^0.1.1"
+    },
+    "private": true,
+    "devDependencies": {
+        "nodemon": "^2.0.15"
+    }
 }

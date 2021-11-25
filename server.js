@@ -1,5 +1,11 @@
-const Pool = require('pg').Pool;
+const dotenv = require('dotenv');
+const http = require('http');
 const app = require('./app');
+
+// dotenv setup
+dotenv.config({
+    path: './.env',
+});
 
 process.on('uncaughtException', err => {
     console.log('UNCAUGHT EXCEPTION!!! shutting down...');
@@ -7,18 +13,13 @@ process.on('uncaughtException', err => {
     process.exit(1);
 });
 
-// Connect the database
-const pool = new Pool({
-    user: process.env.DB_USER,
-    host: process.env.DB_HOST,
-    database: process.env.DB_NAME,
-    password: process.env.DB_PASS,
-    port: process.env.DB_PORT,
-});
-
 // Start the server
-const port = process.env.PORT;
-app.listen(port, () => {
+console.log(process.env.PORT);
+const port = parseInt(process.env.PORT, 10) || 8000;
+app.set('port', port);
+
+const server = http.createServer(app);
+server.listen(port, () => {
     console.log(`Application is running on port ${port}`);
 });
 
