@@ -4,7 +4,6 @@ const bodyParser = require('body-parser');
 const cors = require('cors');
 const helmet = require('helmet');
 
-// const userRoutes = require('./routes/userRoutes');
 // const globalErrHandler = require('./controllers/errorController');
 // const AppError = require('./utils/appError');
 const app = express();
@@ -22,6 +21,8 @@ app.use(cors());
 // Set security HTTP headers
 app.use(helmet());
 
+// app routes
+require('./src/routes')(app);
 app.get('*', (req, res) =>
     res.status(200).send({
         message: 'Welcome to the beginning of nothingness.',
