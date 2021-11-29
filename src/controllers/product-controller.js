@@ -7,15 +7,22 @@ module.exports = {
             .catch(error => res.status(400).send(error));
     },
 
-    list(req, res) {
+    get(req, res) {
         return Product.findAll()
             .then(products => res.status(200).send(products))
             .catch(error => res.status(400).send(error));
     },
 
-    get(req, res) {
+    retrieve(req, res) {
         return Product.findOne({ where: { id: req.params.id } })
-            .then(product => res.status(200).send(product))
+            .then(product => {
+                if (!product) {
+                    return res.status(404).send({
+                        message: 'Not Found',
+                    });
+                }
+                return res.status(200).send(product);
+            })
             .catch(error => res.status(400).send(error));
     },
 

@@ -60,8 +60,8 @@ module.exports = (sequelize, DataTypes) => {
     });
 
     Order.associate = models => {
-        OrderItem.hasMany(models.OrderItem, {
-            foreignKey: 'id',
+        Order.hasMany(models.OrderItem, {
+            foreignKey: 'orderId',
             as: 'orderItems',
         });
     };

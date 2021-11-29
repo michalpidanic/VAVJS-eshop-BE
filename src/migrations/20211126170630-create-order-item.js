@@ -20,6 +20,24 @@ module.exports = {
                 allowNull: false,
                 type: Sequelize.DATE,
             },
+            productId: {
+                type: Sequelize.INTEGER,
+                onDelete: 'CASCADE',
+                reference: {
+                    model: 'Product',
+                    key: 'id',
+                    as: 'productId',
+                },
+            },
+            orderId: {
+                type: Sequelize.INTEGER,
+                onDelete: 'CASCADE',
+                reference: {
+                    model: 'Order',
+                    key: 'id',
+                    as: 'orderId',
+                },
+            },
         });
     },
     down: async (queryInterface, Sequelize) => {

@@ -1,4 +1,5 @@
 const productController = require('../controllers').productController;
+const orderController = require('../controllers').orderController;
 
 module.exports = app => {
     app.get('/api', (req, res) =>
@@ -9,7 +10,13 @@ module.exports = app => {
 
     // product routes
     app.post('/api/product', productController.create);
-    app.get('/api/product', productController.list);
-    app.get('/api/product/:id', productController.get);
+    app.get('/api/product', productController.get);
+    app.get('/api/product/:id', productController.retrieve);
     app.delete('/api/product/:id', productController.delete);
+
+    // order routes
+    app.post('/api/order', orderController.create);
+    app.get('/api/order', orderController.get);
+    app.get('/api/order/:id', orderController.retrieve);
+    app.delete('/api/order/:id', orderController.delete);
 };
