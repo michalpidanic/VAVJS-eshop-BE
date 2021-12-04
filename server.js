@@ -14,7 +14,6 @@ process.on('uncaughtException', err => {
 });
 
 // Start the server
-console.log(process.env.PORT);
 const port = parseInt(process.env.PORT, 10) || 8000;
 app.set('port', port);
 

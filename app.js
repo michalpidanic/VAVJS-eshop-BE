@@ -1,11 +1,8 @@
 const express = require('express');
 const logger = require('morgan');
 const bodyParser = require('body-parser');
-const cors = require('cors');
 const helmet = require('helmet');
 
-// const globalErrHandler = require('./controllers/errorController');
-// const AppError = require('./utils/appError');
 const app = express();
 
 // Log requests to the console.
@@ -16,7 +13,12 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
 // Allow Cross-Origin requests
-app.use(cors());
+app.use(function (req, res, next) {
+    res.header('Access-Control-Allow-Origin', '*');
+    res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
+    res.header('Access-Control-Allow-Methods', 'GET,POST,PUT,PATCH,DELETE');
+    next();
+});
 
 // Set security HTTP headers
 app.use(helmet());

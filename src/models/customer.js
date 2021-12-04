@@ -1,10 +1,10 @@
 module.exports = (sequelize, DataTypes) => {
-    const User = sequelize.define('User', {
-        name: {
+    const Customer = sequelize.define('Customer', {
+        firstName: {
             type: DataTypes.STRING,
             allowNull: false,
         },
-        surname: {
+        lastName: {
             type: DataTypes.STRING,
             allowNull: false,
         },
@@ -16,18 +16,26 @@ module.exports = (sequelize, DataTypes) => {
             type: DataTypes.STRING,
             allowNull: false,
         },
-        passsword: {
+        city: {
             type: DataTypes.STRING,
             allowNull: false,
         },
-        isAdmin: {
-            type: DataTypes.BOOLEAN,
-            defaultValue: false,
+        zipCode: {
+            type: DataTypes.STRING,
+            allowNull: false,
+        },
+        street: {
+            type: DataTypes.STRING,
             allowNull: false,
         },
     });
 
-    User.associate = models => {};
+    Customer.associate = models => {
+        Customer.hasMany(models.Order, {
+            foreignKey: 'customerId',
+            as: 'orders',
+        });
+    };
 
-    return User;
+    return Customer;
 };
