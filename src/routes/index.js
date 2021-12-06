@@ -25,4 +25,5 @@ module.exports = app => {
     // advertisement routes
     app.get('/api/advertisement', advertisementController.get);
     app.post('/api/advertisement', advertisementController.create);
+    app.post('/api/advertisement/counter', advertisementController.incrementCounter);
 };

@@ -5,7 +5,8 @@
     "scripts": {
         "debug": "ndb server.js",
         "prestart": "npx sequelize-cli db:migrate",
-        "start": "nodemon server.js"
+        "start": "nodemon server.js",
+        "test": "mocha --timeout 10000"
     },
     "author": "Michal Pidanic",
     "license": "MIT",
@@ -29,6 +30,9 @@
     "private": true,
     "devDependencies": {
         "nodemon": "^2.0.15",
-        "prettier": "^2.5.0"
+        "prettier": "^2.5.0",
+        "chai": "^3.5.0",
+        "chai-http": "^2.0.1",
+        "mocha": "^2.4.5"
     }
 }
